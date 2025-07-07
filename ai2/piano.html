@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Piano Key Clicker</title>
+  
+  <style>
+    body {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .piano {
+      display: flex;
+      position: relative;
+    }
+    .key {
+      width: 40px;
+      height: 180px;
+      border: 1px solid #000;
+      background: white;
+      margin-right: 2px;
+      border-radius: 4px;
+      box-shadow: 0 4px #999;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .key.active {
+      background: #ffd966;
+    }
+    .black {
+      width: 30px;
+      height: 100px;
+      background: black;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      margin: 0;
+      border-radius: 3px;
+    }
+    .black.active {
+      background: #ff9900;
+    }
+
+.piano-container {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  text-align: center;
+}
+    #save-btn:hover {
+      background-color: #666;
+    }
+    /* Positioning black keys */
+    .black[data-note="C#1"] { left: 29px; }
+    .black[data-note="D#1"] { left: 73px; }
+    .black[data-note="F#1"] { left: 161px; }
+    .black[data-note="G#1"] { left: 205px; }
+    .black[data-note="A#1"] { left: 249px; }
+    /* Positioning black keys */
+    .black[data-note="C#2"] { left: 336px; }
+    .black[data-note="D#2"] { left: 380px; }
+    .black[data-note="F#2"] { left: 468px; }
+    .black[data-note="G#2"] { left: 512px; }
+    .black[data-note="A#2"] { left: 556px; }
+    /* Positioning black keys */
+    .black[data-note="C#3"] { left: 643px; }
+    .black[data-note="D#3"] { left: 687px; }
+    .black[data-note="F#3"] { left: 775px; }
+    .black[data-note="G#3"] { left: 819px; }
+    .black[data-note="A#3"] { left: 863px; }
+    /* Positioning black keys */
+    .black[data-note="C#4"] { left: 950px; }
+    .black[data-note="D#4"] { left: 994px; }
+    .black[data-note="F#4"] { left: 1082px; }
+    .black[data-note="G#4"] { left: 1126px; }
+    .black[data-note="A#4"] { left: 1170px; }
+  </style>
+</head>
+<body>
+
+    <button id="save-btn">Save Instance</button>
+      <div class="piano-container">
+
+    <button id="replay" onclick="play()">Play from beginning</button>
+  <div class="piano">
+    <!-- White Keys -->
+    <div class="key" data-note="C1"></div>
+    <div class="key" data-note="D1"></div>
+    <div class="key" data-note="E1"></div>
+    <div class="key" data-note="F1"></div>
+    <div class="key" data-note="G1"></div>
+    <div class="key" data-note="A1"></div>
+    <div class="key" data-note="B1"></div>
+
+    <!-- Black Keys -->
+    <div class="black" data-note="C#1"></div>
+    <div class="black" data-note="D#1"></div>
+    <div class="black" data-note="F#1"></div>
+    <div class="black" data-note="G#1"></div>
+    <div class="black" data-note="A#1"></div>
+    
+    <!-- White Keys -->
+    <div class="key" data-note="C2"></div>
+    <div class="key" data-note="D2"></div>
+    <div class="key" data-note="E2"></div>
+    <div class="key" data-note="F2"></div>
+    <div class="key" data-note="G2"></div>
+    <div class="key" data-note="A2"></div>
+    <div class="key" data-note="B2"></div>
+
+    <!-- Black Keys -->
+    <div class="black" data-note="C#2"></div>
+    <div class="black" data-note="D#2"></div>
+    <div class="black" data-note="F#2"></div>
+    <div class="black" data-note="G#2"></div>
+    <div class="black" data-note="A#2"></div>
+    
+    <!-- White Keys -->
+    <div class="key" data-note="C3"></div>
+    <div class="key" data-note="D3"></div>
+    <div class="key" data-note="E3"></div>
+    <div class="key" data-note="F3"></div>
+    <div class="key" data-note="G3"></div>
+    <div class="key" data-note="A3"></div>
+    <div class="key" data-note="B3"></div>
+
+    <!-- Black Keys -->
+    <div class="black" data-note="C#3"></div>
+    <div class="black" data-note="D#3"></div>
+    <div class="black" data-note="F#3"></div>
+    <div class="black" data-note="G#3"></div>
+    <div class="black" data-note="A#3"></div>
+    
+    <!-- White Keys -->
+    <div class="key" data-note="C4"></div>
+    <div class="key" data-note="D4"></div>
+    <div class="key" data-note="E4"></div>
+    <div class="key" data-note="F4"></div>
+    <div class="key" data-note="G4"></div>
+    <div class="key" data-note="A4"></div>
+    <div class="key" data-note="B4"></div>
+
+    <!-- Black Keys -->
+    <div class="black" data-note="C#4"></div>
+    <div class="black" data-note="D#4"></div>
+    <div class="black" data-note="F#4"></div>
+    <div class="black" data-note="G#4"></div>
+    <div class="black" data-note="A#4"></div>
+    </div>
+	</div>
+  <script>
+   
+  </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
