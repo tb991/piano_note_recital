@@ -30,6 +30,17 @@ window.onload = () => {
       history.push([...combo]); // clone combo into history
       console.log("Saved:", combo);
       let t = document.getElementById("chord_duration").value;
+      //overriding prior feature with new radio buttons feature
+       const radios = document.getElementsByClassName("timesel");
+	  let selectedValue = null;
+
+	  for (let i = 0; i < radios.length; i++) {
+	    if (radios[i].checked) {
+	      selectedValue = radios[i].value;
+	      break;
+	    }
+	  }
+      t = selectedValue;
       if (t != "1/8" && t != "1/4" && t != "1/2" && t != "2"  && t != "3" && t != "4" && t != "1/3" && t != "2/3" && t != "3/4"){
       	t = "1";
       }
@@ -111,6 +122,7 @@ window.onload = () => {
       await sleep(waitTime);
     }
     clearAllKeys();
+    reciteIndex = 0;
   }
 
   // Make play globally accessible for inline onclick in HTML
