@@ -1,7 +1,9 @@
 window.onload = () => {
 
-  let history = [];
-  let combo = [];
+  let history = []; // all musical notes
+  let combo = []; // the current musical chord
+  let times = []; // the times for each instance
+  let reciteIndex = 0; // for playing the music
 
   const saveBtn = document.getElementById('save-btn');
   const keys = document.querySelectorAll('.key, .black');
@@ -27,6 +29,12 @@ window.onload = () => {
     if (combo.length > 0) {
       history.push([...combo]); // clone combo into history
       console.log("Saved:", combo);
+      let t = document.getElementById("chord_duration").value;
+      if (t != "1/8" && t != "1/4" && t != "1/2" && t != "2"  && t != "3" && t != "4" && t != "1/3" && t != "2/3" && t != "3/4"){
+      	t = "1";
+      }
+      times.push(t)
+      console.log("Time included.");
     }
     combo = [];
     clearAllKeys();
@@ -69,7 +77,38 @@ window.onload = () => {
         activateKey(note);
         playSound(note); // 🔉 play sound during playback
       });
-      await sleep(1000);
+      // now i need to sleep according to the specified times
+      let timeIdx = reciteIndex;
+      let waitTime = 1000;
+      if (times[timeIdx] == "1/8"){
+      	waitTime = 125;
+      }
+      if (times[timeIdx] == "1/4"){
+      	waitTime = 250;
+      }
+      if (times[timeIdx] == "1/2"){
+      	waitTime = 500;
+      }
+      if (times[timeIdx] == "2"){
+      	waitTime = 2000;
+      }
+      if (times[timeIdx] == "3"){
+      	waitTime = 3000;
+      }
+      if (times[timeIdx] == "4"){
+      	waitTime = 4000;
+      }
+      if (times[timeIdx] == "3/4"){
+      	waitTime = 750;
+      }
+      if (times[timeIdx] == "1/3"){
+      	waitTime = 333;
+      }
+      if (times[timeIdx] == "2/3"){
+      	waitTime = 666;
+      }
+      reciteIndex += 1;
+      await sleep(waitTime);
     }
     clearAllKeys();
   }
